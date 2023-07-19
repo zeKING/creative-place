@@ -1,0 +1,36 @@
+services:
+  - docker:20.10.17-dind
+
+stages:
+  - build_staging
+  - deploy_staging
+
+build_staging:
+  image: docker:latest
+  stage: build_staging
+  tags:
+    - "deployment"
+  only:
+    - main
+  script:
+    - docker build -t $REGISTRY/shaxboz99/dar:main ./
+    - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD $REGISTRY/shaxboz99/dar:main
+    - docker push $REGISTRY/shaxboz99/dar:main
+  environment: staging
+
+deploy_staging:
+  stage: deploy_staging
+  tags:
+    - "deployment"
+  only:
+    - main
+  script:
+    - apk update
+    - apk add openssh
+    - echo "-----BEGIN RSA PRIVATE KEY-----" > devops.pem
+    - echo $SSH_KEY >> devops.pem
+    - echo "-----END RSA PRIVATE KEY-----" >> devops.pem
+    - chmod 400 devops.pem
+    - ssh -i devops.pem -o StrictHostKeyChecking=no root@147.182.140.146 'docker pull '$REGISTRY'/shaxboz99/dar:main && docker service update --with-registry-auth --image '$REGISTRY'/shaxboz99/dar:main shaxboz99-dar-main'
+    - rm devops.pem
+  environment: staging

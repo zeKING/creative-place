@@ -1,0 +1,113 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Swagger",
+    "version": "1.0.11"
+  },
+  "servers": [
+    {
+      "url": "http://ung.uz/api"
+    }
+  ],
+  "tags": [
+    {
+      "name": "user",
+      "description": "Everything about your Pets",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://ung.uz/swagger-editor/editor/"
+      }
+    }
+  ],
+  "paths": {
+    "/user/reg": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "description": "The first stage of registration",
+        "operationId": "addPet",
+        "requestBody": {
+          "description": "The first stage of registration",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/userReg"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/reg200"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "userReg": {
+        "required": [
+          "name",
+          "photoUrls"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int",
+            "example": 10
+          },
+          "name": {
+            "type": "string",
+            "example": "doggie"
+          },
+          "status": {
+            "type": "boolean",
+            "description": "Status",
+            "enum": [
+              true
+            ]
+          }
+        }
+      },
+      "reg200": {
+        "required": [
+          "name",
+          "photoUrls"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int",
+            "example": 10
+          },
+          "name": {
+            "type": "string",
+            "example": "doggie"
+          },
+          "status": {
+            "type": "boolean",
+            "description": "Status",
+            "enum": [
+              true
+            ]
+          }
+        }
+      }
+    }
+  }
+}

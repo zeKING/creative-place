@@ -1,0 +1,1 @@
+{"click_trans_id":"14566033","service_id":"11091","merchant_trans_id":"10","merchant_prepare_id":"16853765","amount":"500","action":"1","error":"0","error_note":"Ok","sign_time":"2018-04-23 13:02:36","sign_string":"89a1df092a2569b03e74a25ff2060490","click_paydoc_id":"16853765"}

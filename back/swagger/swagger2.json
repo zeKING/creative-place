@@ -1,0 +1,1823 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Swagger",
+    "version": "1.0.11"
+  },
+  "servers": [
+    {
+      "url": "http://ung.uz/api"
+    }
+  ],
+  "tags": [
+    {
+      "name": "user",
+      "description": "Users api"
+    },
+    {
+      "name": "menu",
+      "description": "Menu api"
+    },
+    {
+      "name": "order",
+      "description": "Order api"
+    },
+    {
+      "name": "favourite",
+      "description": "Favourite api"
+    },
+    {
+      "name": "search",
+      "description": "Search api"
+    },
+    {
+      "name": "notification",
+      "description": "Notification api"
+    }
+  ],
+  "paths": {
+    "/user/reg": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "description": "The first stage of registration; Send sms code for verified phone",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user_type": {
+                    "type": "boolean",
+                    "enum": [
+                      "seller",
+                      "buyer"
+                    ]
+                  },
+                  "phone": {
+                    "type": "string",
+                    "example": "+998991112233"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": 123123
+                  }
+                },
+                "required": [
+                  "user_type",
+                  "phone",
+                  "password"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Успешно"
+                        },
+                        "user_id": {
+                          "type": "integer",
+                          "example": 103
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Error"
+          }
+        }
+      }
+    },
+    "/user/verified_phone": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "description": "verified phone",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "activition_code": {
+                    "type": "integer",
+                    "example": 94028
+                  },
+                  "user_id": {
+                    "type": "integer",
+                    "example": 103
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "user_id": {
+                          "type": "integer",
+                          "example": 103
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Не правильно введены данные"
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/reset_sms": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "description": "reset sms code",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user_id": {
+                    "type": "integer",
+                    "example": 103
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Успешно"
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Телефон не найден"
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/forgot_password": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "description": "forgot password send sms code",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string",
+                    "example": "+998991112233"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "На ваш телефон отправлен новый пароль"
+                        },
+                        "user_id": {
+                          "type": "integer",
+                          "example": 103
+                        },
+                        "phone": {
+                          "type": "string",
+                          "example": "+998991112233"
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Телефон не найден."
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/change_password": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "description": "forgot password send sms code",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user_id": {
+                    "type": "integer",
+                    "example": 103
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "123123"
+                  },
+                  "phone": {
+                    "type": "string",
+                    "example": "+998991112233"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "successful"
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Телефон не найден."
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/reg2": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "description": "registration step 3",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user_id": {
+                    "type": "integer",
+                    "example": 103
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "test"
+                  },
+                  "birthday": {
+                    "type": "string",
+                    "example": "30-12-2022"
+                  },
+                  "about_me": {
+                    "type": "string",
+                    "example": "about me test"
+                  },
+                  "phone": {
+                    "type": "string",
+                    "example": "+998991112233"
+                  },
+                  "photo": {
+                    "type": "string",
+                    "example": "File.png"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "access_token": {
+                          "type": "string",
+                          "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiODAiLCJ1c2VyX3R5cGUiOiJidXllciIsImV4cCI6MTY2NDk2NjgyMX0.c8whxF0GAxn79L8NwTOV4ApVMJWmtutMK0yJ5tzsaaI"
+                        },
+                        "roomid": {
+                          "type": "integer",
+                          "example": 103
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Не правильный логин или пароль"
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/login": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "description": "Login user",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "phone": {
+                    "type": "string",
+                    "example": "+998991112233"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": 123123
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "access_token": {
+                          "type": "string",
+                          "example": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoiODAiLCJ1c2VyX3R5cGUiOiJidXllciIsImV4cCI6MTY2NDk2NjgyMX0.c8whxF0GAxn79L8NwTOV4ApVMJWmtutMK0yJ5tzsaaI"
+                        },
+                        "roomid": {
+                          "type": "integer",
+                          "example": 103
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Не правильный логин или пароль"
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/edit": {
+      "post": {
+        "tags": [
+          "user"
+        ],
+        "description": "Edit profile",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "user_id": {
+                    "type": "integer",
+                    "example": 103
+                  },
+                  "name": {
+                    "type": "string",
+                    "example": "test"
+                  },
+                  "birthday": {
+                    "type": "string",
+                    "example": "30-12-2022"
+                  },
+                  "phone": {
+                    "type": "string",
+                    "example": "+998991112233"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "test@gmail.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/profile": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "description": "get profile detail if user sign in",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "example": "test"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "test@rmail.uz"
+                        },
+                        "roomid": {
+                          "type": "string",
+                          "example": "80"
+                        },
+                        "age": {
+                          "type": "integer",
+                          "example": 52
+                        },
+                        "photo": {
+                          "type": "string",
+                          "example": "https://admin.5ss.uz/uploads/user/sadas123123sad.png"
+                        },
+                        "count_work": {
+                          "type": "integer",
+                          "example": 0
+                        },
+                        "works": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "integer",
+                                "example": 1
+                              },
+                              "favourite": {
+                                "type": "boolean",
+                                "example": true
+                              },
+                              "tag": {
+                                "type": "string",
+                                "example": "Картинка в стиле Loft"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "test work"
+                              },
+                              "price": {
+                                "type": "integer",
+                                "example": 10000
+                              },
+                              "file": {
+                                "type": "string",
+                                "example": "https://admin.5ss.uz/uploads/user/sadas123123sad.jpeg"
+                              }
+                            }
+                          }
+                        },
+                        "sel": {
+                          "type": "integer",
+                          "example": 258
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/users": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "description": "get users",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "example": "test"
+                          },
+                          "user_id": {
+                            "type": "integer",
+                            "example": 103
+                          },
+                          "roomid": {
+                            "type": "string",
+                            "example": "103"
+                          },
+                          "age": {
+                            "type": "integer",
+                            "example": 52
+                          },
+                          "photo": {
+                            "type": "string",
+                            "example": "https://admin.5ss.uz/uploads/user/sadas123123sad.png"
+                          },
+                          "count_work": {
+                            "type": "integer",
+                            "example": 0
+                          },
+                          "about_me": {
+                            "type": "string",
+                            "example": "test about me"
+                          }
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/usersHome": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "description": "get users for home",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "example": "test"
+                          },
+                          "user_id": {
+                            "type": "integer",
+                            "example": 103
+                          },
+                          "age": {
+                            "type": "integer",
+                            "example": 52
+                          },
+                          "photo": {
+                            "type": "string",
+                            "example": "https://admin.5ss.uz/uploads/user/sadas123123sad.png"
+                          },
+                          "count_work": {
+                            "type": "integer",
+                            "example": 0
+                          },
+                          "about_me": {
+                            "type": "string",
+                            "example": "test about me"
+                          }
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/user/detail/{user_id}": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "description": "get user detail id",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "description": "ID users",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": "string",
+                          "example": "test"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "test@rmail.uz"
+                        },
+                        "roomid": {
+                          "type": "string",
+                          "example": "103"
+                        },
+                        "age": {
+                          "type": "integer",
+                          "example": 52
+                        },
+                        "photo": {
+                          "type": "string",
+                          "example": "https://admin.5ss.uz/uploads/user/sadas123123sad.png"
+                        },
+                        "count_work": {
+                          "type": "integer",
+                          "example": 0
+                        },
+                        "works": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "integer",
+                                "example": 1
+                              },
+                              "favourite": {
+                                "type": "boolean",
+                                "example": true
+                              },
+                              "tag": {
+                                "type": "string",
+                                "example": "Картинка в стиле Loft"
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "test work"
+                              },
+                              "price": {
+                                "type": "integer",
+                                "example": 10000
+                              },
+                              "file": {
+                                "type": "string",
+                                "example": "https://admin.5ss.uz/uploads/user/sadas123123sad.jpeg"
+                              }
+                            }
+                          }
+                        },
+                        "sel": {
+                          "type": "integer",
+                          "example": 258
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/user": {
+      "get": {
+        "tags": [
+          "user"
+        ],
+        "description": "authorization user; In header authorization bearer <token> you need to send",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "user_id": {
+                          "type": "integer",
+                          "example": 103
+                        },
+                        "phone": {
+                          "type": "string",
+                          "example": "+998991112233"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "test"
+                        },
+                        "user_type": {
+                          "type": "string",
+                          "example": "seller or buyer"
+                        },
+                        "isNewNotification": {
+                          "type": "boolean",
+                          "enum": [
+                            true,
+                            false
+                          ]
+                        },
+                        "isNewFavorite": {
+                          "type": "boolean",
+                          "enum": [
+                            true,
+                            false
+                          ]
+                        },
+                        "isNewCart": {
+                          "type": "boolean",
+                          "enum": [
+                            true,
+                            false
+                          ]
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "test@rmail.uz"
+                        },
+                        "roomid": {
+                          "type": "string",
+                          "example": "103"
+                        },
+                        "age": {
+                          "type": "integer",
+                          "example": 52
+                        },
+                        "photo": {
+                          "type": "string",
+                          "example": "https://admin.5ss.uz/uploads/user/sadas123123sad.png"
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/menu": {
+      "get": {
+        "tags": [
+          "menu"
+        ],
+        "description": "get menu",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "title": {
+                            "type": "string",
+                            "example": "О нас"
+                          },
+                          "link": {
+                            "type": "string",
+                            "example": "about"
+                          },
+                          "submenu": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "title": {
+                                  "type": "string",
+                                  "example": "Submenu"
+                                },
+                                "link": {
+                                  "type": "string",
+                                  "example": "Submenu"
+                                },
+                                "submenu": {
+                                  "type": "string",
+                                  "example": null
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/menu/footer": {
+      "get": {
+        "tags": [
+          "menu"
+        ],
+        "description": "get footer menu",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "title": {
+                            "type": "string",
+                            "example": "О нас"
+                          },
+                          "link": {
+                            "type": "string",
+                            "example": "about"
+                          },
+                          "submenu": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "title": {
+                                  "type": "string",
+                                  "example": "Submenu"
+                                },
+                                "link": {
+                                  "type": "string",
+                                  "example": "Submenu"
+                                },
+                                "submenu": {
+                                  "type": "string",
+                                  "example": null
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/menu/view/{menu_id}": {
+      "get": {
+        "tags": [
+          "menu"
+        ],
+        "description": "get user detail id",
+        "parameters": [
+          {
+            "name": "menu_id",
+            "in": "path",
+            "description": "ID menu",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string",
+                          "example": "О нас"
+                        },
+                        "short_content": {
+                          "type": "string",
+                          "example": "test testtetse"
+                        },
+                        "content": {
+                          "type": "string",
+                          "example": "test content testtetse"
+                        },
+                        "gallery": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "img": {
+                                "type": "string",
+                                "example": "https://admin.5ss.uz/uploads/user/sadas123123sad.jpeg"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders": {
+      "post": {
+        "tags": [
+          "order"
+        ],
+        "description": "Order pay if user sign in",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "work_id": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "example": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "example": "link octo"
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "message": {
+                          "type": "string",
+                          "example": "Ваша корзина пуста!"
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/orders/history": {
+      "get": {
+        "tags": [
+          "order"
+        ],
+        "description": "get order history",
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "example": 1
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "test"
+                          },
+                          "tag": {
+                            "type": "string",
+                            "example": "test tag title"
+                          },
+                          "price": {
+                            "type": "integer",
+                            "example": 10000
+                          },
+                          "file": {
+                            "type": "string",
+                            "example": "file work url"
+                          }
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/favourite/save": {
+      "post": {
+        "tags": [
+          "favourite"
+        ],
+        "description": "favourite save",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "work_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "user_id": {
+                    "type": "integer",
+                    "example": 103
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "work_id": {
+                          "type": "integer",
+                          "example": 1
+                        },
+                        "user_id": {
+                          "type": "integer",
+                          "example": 103
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "string",
+                      "example": null
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/favourite/delete": {
+      "post": {
+        "tags": [
+          "favourite"
+        ],
+        "description": "favourite delete",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "work_id": {
+                    "type": "integer",
+                    "example": 1
+                  },
+                  "user_id": {
+                    "type": "integer",
+                    "example": 103
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/favourite": {
+      "get": {
+        "tags": [
+          "favourite"
+        ],
+        "description": "get users",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "user_id",
+            "schema": {
+              "type": "integer",
+              "example": 103
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "example": "work name"
+                          },
+                          "work_id": {
+                            "type": "integer",
+                            "example": 1
+                          },
+                          "price": {
+                            "type": "integer",
+                            "example": 10000
+                          },
+                          "file": {
+                            "type": "string",
+                            "example": "https://admin.5ss.uz/uploads/works/sadas123123sad.png"
+                          },
+                          "tag": {
+                            "type": "string",
+                            "example": "test tag name"
+                          }
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/search": {
+      "get": {
+        "tags": [
+          "search"
+        ],
+        "description": "search",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "word",
+            "schema": {
+              "type": "string",
+              "example": "стил"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "example": 1
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "test"
+                          }
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Ничего не найдено"
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/notification": {
+      "get": {
+        "tags": [
+          "notification"
+        ],
+        "description": "get notifications user",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "user_id",
+            "schema": {
+              "type": "integer",
+              "example": 103
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "integer",
+                            "example": 20
+                          },
+                          "name": {
+                            "type": "string",
+                            "example": "name"
+                          },
+                          "message": {
+                            "type": "string",
+                            "example": "gsdfgdsgdsfgd"
+                          },
+                          "is_read": {
+                            "type": "boolean",
+                            "enum": [
+                              true,
+                              false
+                            ]
+                          },
+                          "work_id": {
+                            "type": "integer",
+                            "example": 32
+                          },
+                          "file": {
+                            "type": "string",
+                            "example": "https://admin.5ss.uz/uploads/works/sadas123123sad.png"
+                          },
+                          "created_on": {
+                            "type": "string",
+                            "example": "18-09-2022 21:50:55"
+                          }
+                        }
+                      }
+                    },
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/notification/delete": {
+      "post": {
+        "tags": [
+          "notification"
+        ],
+        "description": "notification delete",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer",
+                    "example": 1
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": false
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

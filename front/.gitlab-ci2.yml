@@ -1,0 +1,35 @@
+# image: ubuntu:20.04
+# stages:
+#   - stage
+# dar:
+#   stage: stage
+#   script:
+#     - apt update
+#     - apt-get install ssh -y
+#     - apt install openssh-server
+#     - echo "-----BEGIN RSA PRIVATE KEY-----" > devops.pem
+#     - echo $SSH_PRIVATE_KEY_BASE64 >> devops.pem
+#     - echo "-----END RSA PRIVATE KEY-----" >> devops.pem
+#     - chmod 400 devops.pem
+#     - ssh -i devops.pem  -o StrictHostKeyChecking=no -T "$TARGET_SERVER_USER@$TARGET_SERVER_HOST"
+#     - echo "connection established"
+#     - if [ "$CI_COMMIT_REF_NAME" == "main" ]; then pm2 deploy pm2-ecosystem.config.js stage setup 2>&1 || true; fi;
+#     - if [ "$CI_COMMIT_REF_NAME" == "main" ]; then pm2 deploy pm2-ecosystem.config.js stage; fi;
+#   only:
+#     - main
+
+# image: node:16
+# before_script:
+#   - npm install
+# cache:
+#   paths:
+#     - node_modules/
+# dar:
+#   script:
+#     - npm run generate
+#     - pm2 start
+#   artifacts:
+#     paths:
+#       - dist
+#   only:
+#     - main

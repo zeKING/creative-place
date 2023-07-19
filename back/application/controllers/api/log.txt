@@ -1,0 +1,66 @@
+{"error":0,"shop_transaction_id":"3","octo_payment_UUID":"4ab7f88b-ba5b-4c26-a314-cd1ac36dc42f","status":"created","octo_pay_url":"https://pay2.octo.uz/pay/4ab7f88b-ba5b-4c26-a314-cd1ac36dc42f?language\u003dru"}
+---------------------------------------
+{"error":0,"shop_transaction_id":"4","octo_payment_UUID":"f165176f-64c3-4a22-b5cb-d98a87880722","status":"created","octo_pay_url":"https://pay2.octo.uz/pay/f165176f-64c3-4a22-b5cb-d98a87880722?language\u003dru"}
+---------------------------------------
+{"error":0,"shop_transaction_id":"5","octo_payment_UUID":"bd49019c-26b5-4fd7-99be-7d901bf55272","status":"created","octo_pay_url":"https://pay2.octo.uz/pay/bd49019c-26b5-4fd7-99be-7d901bf55272?language\u003dru"}
+---------------------------------------
+{"error":0,"shop_transaction_id":"6","octo_payment_UUID":"6b0f1d0c-6839-46bf-a6d5-6e2330c517de","status":"created","octo_pay_url":"https://pay2.octo.uz/pay/6b0f1d0c-6839-46bf-a6d5-6e2330c517de?language\u003dru"}
+---------------------------------------
+{"error":0,"errorMessage":"This payment was created by previous request.","shop_transaction_id":"1","octo_payment_UUID":"345a8e21-bdf4-4801-9450-50fe9dc42cc2","status":"succeeded","octo_pay_url":"https://pay2.octo.uz/pay/345a8e21-bdf4-4801-9450-50fe9dc42cc2?language\u003den","transfer_sum":10996.22,"refunded_sum":0.00}
+---------------------------------------
+{"error":0,"shop_transaction_id":"2","octo_payment_UUID":"07d2124a-e546-4424-83a0-1f5a8d1255f3","status":"created","octo_pay_url":"https://pay2.octo.uz/pay/07d2124a-e546-4424-83a0-1f5a8d1255f3?language\u003dru"}
+---------------------------------------
+{"error":0,"errorMessage":"This payment was created by previous request.","shop_transaction_id":"3","octo_payment_UUID":"4ab7f88b-ba5b-4c26-a314-cd1ac36dc42f","status":"created","octo_pay_url":"https://pay2.octo.uz/pay/4ab7f88b-ba5b-4c26-a314-cd1ac36dc42f?language\u003dru"}
+---------------------------------------
+{"error":0,"errorMessage":"This payment was created by previous request.","shop_transaction_id":"4","octo_payment_UUID":"f165176f-64c3-4a22-b5cb-d98a87880722","status":"succeeded","octo_pay_url":"https://pay2.octo.uz/pay/f165176f-64c3-4a22-b5cb-d98a87880722?language\u003dru","transfer_sum":1289600.00,"refunded_sum":0.00}
+---------------------------------------
+{"error":0,"errorMessage":"This payment was created by previous request.","shop_transaction_id":"5","octo_payment_UUID":"bd49019c-26b5-4fd7-99be-7d901bf55272","status":"created","octo_pay_url":"https://pay2.octo.uz/pay/bd49019c-26b5-4fd7-99be-7d901bf55272?language\u003dru"}
+---------------------------------------
+{"error":0,"errorMessage":"This payment was created by previous request.","shop_transaction_id":"6","octo_payment_UUID":"6b0f1d0c-6839-46bf-a6d5-6e2330c517de","status":"succeeded","octo_pay_url":"https://pay2.octo.uz/pay/6b0f1d0c-6839-46bf-a6d5-6e2330c517de?language\u003dru","transfer_sum":1289600.00,"refunded_sum":0.00}
+---------------------------------------
+{"error":2,"errorMessage":"No shop with id 6"}
+---------------------------------------
+{"error":0,"shop_transaction_id":"11","octo_payment_UUID":"cff6184c-e0be-470c-aa90-12956126e826","status":"created","octo_pay_url":"https://pay2.octo.uz/pay/cff6184c-e0be-470c-aa90-12956126e826?language\u003dru"}
+---------------------------------------
+{"error":0,"errorMessage":"This payment was created by previous request.","shop_transaction_id":"2","octo_payment_UUID":"07d2124a-e546-4424-83a0-1f5a8d1255f3","status":"succeeded","octo_pay_url":"https://pay2.octo.uz/pay/07d2124a-e546-4424-83a0-1f5a8d1255f3?language\u003dru","transfer_sum":1388800.00,"refunded_sum":0.00}
+---------------------------------------
+{"error":0,"errorMessage":"This payment was created by previous request.","shop_transaction_id":"3","octo_payment_UUID":"4ab7f88b-ba5b-4c26-a314-cd1ac36dc42f","status":"created","octo_pay_url":"https://pay2.octo.uz/pay/4ab7f88b-ba5b-4c26-a314-cd1ac36dc42f?language\u003dru"}
+---------------------------------------
+{"error":0,"errorMessage":"This payment was created by previous request.","shop_transaction_id":"4","octo_payment_UUID":"f165176f-64c3-4a22-b5cb-d98a87880722","status":"succeeded","octo_pay_url":"https://pay2.octo.uz/pay/f165176f-64c3-4a22-b5cb-d98a87880722?language\u003dru","transfer_sum":1289600.00,"refunded_sum":0.00}
+---------------------------------------
+{"error":0,"errorMessage":"This payment was created by previous request.","shop_transaction_id":"5","octo_payment_UUID":"bd49019c-26b5-4fd7-99be-7d901bf55272","status":"succeeded","octo_pay_url":"https://pay2.octo.uz/pay/bd49019c-26b5-4fd7-99be-7d901bf55272?language\u003dru","transfer_sum":1289600.00,"refunded_sum":0.00}
+---------------------------------------
+{"error":0,"errorMessage":"This payment was created by previous request.","shop_transaction_id":"6","octo_payment_UUID":"6b0f1d0c-6839-46bf-a6d5-6e2330c517de","status":"succeeded","octo_pay_url":"https://pay2.octo.uz/pay/6b0f1d0c-6839-46bf-a6d5-6e2330c517de?language\u003dru","transfer_sum":1289600.00,"refunded_sum":0.00}
+---------------------------------------
+{"error":0,"errorMessage":"This payment was created by previous request.","shop_transaction_id":"7","octo_payment_UUID":"63ddc66c-5c89-4360-bcc4-01ae55813a71","status":"created","octo_pay_url":"https://pay2.octo.uz/pay/63ddc66c-5c89-4360-bcc4-01ae55813a71?language\u003den"}
+---------------------------------------
+{"error":0,"errorMessage":"This payment was created by previous request.","shop_transaction_id":"8","octo_payment_UUID":"2bd54fc2-0a77-421c-86dc-9c1fab185f99","status":"succeeded","octo_pay_url":"https://pay2.octo.uz/pay/2bd54fc2-0a77-421c-86dc-9c1fab185f99?language\u003den","transfer_sum":10996.22,"refunded_sum":0.00}
+---------------------------------------
+{"error":0,"errorMessage":"This payment was created by previous request.","shop_transaction_id":"9","octo_payment_UUID":"dbda85b4-da69-402f-b7bf-3c8ee510762e","status":"succeeded","octo_pay_url":"https://pay2.octo.uz/pay/dbda85b4-da69-402f-b7bf-3c8ee510762e?language\u003den","transfer_sum":10996.22,"refunded_sum":0.00}
+---------------------------------------
+{"error":0,"shop_transaction_id":"10","octo_payment_UUID":"3f0466ab-cfdc-4aad-8785-5cff51b04468","status":"created","octo_pay_url":"https://pay2.octo.uz/pay/3f0466ab-cfdc-4aad-8785-5cff51b04468?language\u003den"}
+---------------------------------------
+{"error":0,"errorMessage":"This payment was created by previous request.","shop_transaction_id":"11","octo_payment_UUID":"cff6184c-e0be-470c-aa90-12956126e826","status":"succeeded","octo_pay_url":"https://pay2.octo.uz/pay/cff6184c-e0be-470c-aa90-12956126e826?language\u003dru","transfer_sum":138880.00,"refunded_sum":0.00}
+---------------------------------------
+{"error":0,"shop_transaction_id":"12","octo_payment_UUID":"e323417d-041e-4ef8-bc86-336e32472ef1","status":"created","octo_pay_url":"https://pay2.octo.uz/pay/e323417d-041e-4ef8-bc86-336e32472ef1?language\u003dru"}
+---------------------------------------
+{"error":0,"shop_transaction_id":"13","octo_payment_UUID":"2525a046-e0bc-49b1-a9e0-f42c744729b1","status":"created","octo_pay_url":"https://pay2.octo.uz/pay/2525a046-e0bc-49b1-a9e0-f42c744729b1?language\u003dru"}
+---------------------------------------
+{"error":0,"shop_transaction_id":"14","octo_payment_UUID":"eba48ca7-045e-47a0-b947-78dcbd58f335","status":"created","octo_pay_url":"https://pay2.octo.uz/pay/eba48ca7-045e-47a0-b947-78dcbd58f335?language\u003dru"}
+---------------------------------------
+{"error":0,"shop_transaction_id":"15","octo_payment_UUID":"44019f44-57a1-4988-9f1e-523a5be1d10c","status":"created","octo_pay_url":"https://pay2.octo.uz/pay/44019f44-57a1-4988-9f1e-523a5be1d10c?language\u003dru"}
+---------------------------------------
+{"error":0,"shop_transaction_id":"16","octo_payment_UUID":"bb67bfba-a972-4aff-b642-35f064893118","status":"created","octo_pay_url":"https://pay2.octo.uz/pay/bb67bfba-a972-4aff-b642-35f064893118?language\u003dru"}
+---------------------------------------
+{"error":0,"errorMessage":"This payment was created by previous request.","shop_transaction_id":"17","octo_payment_UUID":"996bdb34-3988-42b5-bbf5-d125b48a1cee","status":"created","octo_pay_url":"https://pay2.octo.uz/pay/996bdb34-3988-42b5-bbf5-d125b48a1cee?language\u003den"}
+---------------------------------------
+{"error":0,"shop_transaction_id":"18","octo_payment_UUID":"1e6d0e8d-d5da-45c0-84de-0900e4a93cc5","status":"created","octo_pay_url":"https://pay2.octo.uz/pay/1e6d0e8d-d5da-45c0-84de-0900e4a93cc5?language\u003dru"}
+---------------------------------------
+{"error":0,"shop_transaction_id":"19","octo_payment_UUID":"5148691a-72df-41bc-93cf-e66c19ef04be","status":"created","octo_pay_url":"https://pay2.octo.uz/pay/5148691a-72df-41bc-93cf-e66c19ef04be?language\u003dru"}
+---------------------------------------
+{"error":0,"shop_transaction_id":"20","octo_payment_UUID":"acabf8a3-62ca-4ed3-823d-9d0ac9553e0c","status":"created","octo_pay_url":"https://pay2.octo.uz/pay/acabf8a3-62ca-4ed3-823d-9d0ac9553e0c?language\u003dru"}
+---------------------------------------
+{"error":0,"shop_transaction_id":"21","octo_payment_UUID":"92650b57-eec1-46a8-a8b3-2e86b426c055","status":"created","octo_pay_url":"https://pay2.octo.uz/pay/92650b57-eec1-46a8-a8b3-2e86b426c055?language\u003dru"}
+---------------------------------------
+{"error":0,"errorMessage":"This payment was created by previous request.","shop_transaction_id":"22","octo_payment_UUID":"5e4938a9-a444-4aaa-bc36-a9287ec4fb84","status":"created","octo_pay_url":"https://pay2.octo.uz/pay/5e4938a9-a444-4aaa-bc36-a9287ec4fb84?language\u003den"}
+---------------------------------------

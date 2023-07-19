@@ -1,0 +1,14 @@
+version: "2.4"
+
+services:
+  frontend:
+    image: localhost/frontend
+    ports:
+      - "3000:3000"
+    build: ./
+    container_name: frontend
+    env_file: .env
+
+
+
+    
